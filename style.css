@@ -1,3 +1,64 @@
-body{
-    
+.parallax-card__wrapper{
+    display: flex;
+    gap:20px;
+}
+
+.parallax-card
+{
+    pointer-events: all;
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;   
+     width: 300px;
+    height: 400px; 
+    transition: 0.2s ease;
+}
+.parallax-card__front,.parallax-card__back
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    height: 100%; 
+    transition: transform 2s ease;
+
+}
+
+.parallax-card__front::after,.parallax-card__back::after
+{
+    content: "";
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.218);
+}
+
+.parallax-card__image{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.parallax-card__text{
+    position: absolute;
+    z-index: 2;
+    font-size: 20px;
+    color: white;
+
+}
+
+.parallax-card__front.parallax-card__hide,
+.parallax-card__back.parallax-card__hide
+{
+    opacity: 0;
+}
+
+.parallax-card__rotate
+{
+    transform: rotateX(360deg);
+
 }
