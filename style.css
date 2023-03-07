@@ -1,64 +1,88 @@
-.parallax-card__wrapper{
-    display: flex;
-    gap:20px;
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+
+body {
+  font-family: "Open Sans", sans-serif;
+  background-color: rgba(35, 33, 53, 0.91);
 }
 
-.parallax-card
-{
-    pointer-events: all;
-    position: relative;
-    border-radius: 10px;
-    overflow: hidden;   
-     width: 300px;
-    height: 400px; 
-    transition: 0.2s ease;
-}
-.parallax-card__front,.parallax-card__back
-{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    width: 100%;
-    height: 100%; 
-    transition: transform 2s ease;
-
+.parallax-card__wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  height: 100vh;
+  gap: 50px;
+  transform-style: preserve-3d;
+  transform: perspective(9999px);
 }
 
-.parallax-card__front::after,.parallax-card__back::after
-{
-    content: "";
-    position: absolute;
-    z-index: 1;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.218);
+.parallax-card {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  width: 15%;
+  height: 400px;
+  box-shadow: rgba(3, 3, 3, 0.323) 0px 0px 20px 10px;
+  border-radius: 10px;
+  transform-style: preserve-3d;
+  transform: perspective(1000px);
+  transition: 5s cubic-bezier(0, 1.07, 0, 1.17);
 }
 
-.parallax-card__image{
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.parallax-card__front,
+.parallax-card__back {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
 }
 
-.parallax-card__text{
-    position: absolute;
-    z-index: 2;
-    font-size: 20px;
-    color: white;
+.parallax-card__back {
+  transform: rotateX(-180deg);
+}
 
+.parallax-card__image-wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 10;
+  border-radius: 10px;
+  filter: blur(1px) brightness(0.7);
+}
+
+.parallax-card__image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -10;
+  object-fit: cover;
+  transform: scale(1.5);
+}
+
+.parallax-card__text {
+  position: absolute;
+  align-self: center;
+  font-size: 32px;
+  width: max-content;
+  pointer-events: none;
+  color: rgb(255, 255, 255);
+  text-shadow: 2px 4px 1px black;
+}
+
+.parallax-card__text-front {
+  transform: translateZ(50px);
+}
+
+.parallax-card__text-back {
+  transform: rotateX(-180deg) translateZ(50px);
 }
 
 .parallax-card__front.parallax-card__hide,
-.parallax-card__back.parallax-card__hide
-{
-    opacity: 0;
-}
-
-.parallax-card__rotate
-{
-    transform: rotateX(360deg);
-
+.parallax-card__back.parallax-card__hide {
+  display: none;
 }
