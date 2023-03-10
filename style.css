@@ -11,13 +11,12 @@ body {
   align-items: center;
   flex-wrap: wrap;
   height: 100vh;
-  gap: 50px;
+  gap: 120px;
   transform-style: preserve-3d;
   transform: perspective(9999px);
 }
 
 .parallax-card {
-  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -27,8 +26,8 @@ body {
   box-shadow: rgba(3, 3, 3, 0.323) 0px 0px 20px 10px;
   border-radius: 10px;
   transform-style: preserve-3d;
-  transform: perspective(1000px);
-  transition: 5s cubic-bezier(0, 1.07, 0, 1.17);
+  transform: perspective(1000px) translateZ(25px);
+  pointer-events: all;
 }
 
 .parallax-card__front,
@@ -37,8 +36,10 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  pointer-events: none;
   width: 100%;
   height: 100%;
+  pointer-events: all;
 }
 
 .parallax-card__back {
@@ -46,22 +47,24 @@ body {
 }
 
 .parallax-card__image-wrapper {
-  position: absolute;
+  position: relative;
   width: 100%;
   height: 100%;
+  pointer-events: none;
   overflow: hidden;
-  z-index: 10;
   border-radius: 10px;
+  pointer-events: all;
   filter: blur(1px) brightness(0.7);
 }
 
 .parallax-card__image {
-  position: absolute;
+  position: relative;
   width: 100%;
   height: 100%;
   z-index: -10;
   object-fit: cover;
-  transform: scale(1.5);
+  pointer-events: all;
+  transform: scale(1.4) translateZ(100px);
 }
 
 .parallax-card__text {
